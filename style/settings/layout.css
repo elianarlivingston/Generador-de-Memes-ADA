@@ -1,0 +1,17 @@
+:root {
+    --container: calc( calc(calc(100% / 12) * 8) / 2 );
+
+    --spacing-0: 0;
+    --spacing-1: .25em;
+    --spacing-2: .5em;
+    --spacing-3: .75em;
+    --spacing-4: 1em;
+    --spacing-5: 1.25em;
+    --spacing-6: 1.5em;
+    --spacing-7: 1.75em;
+    --spacing-8: 2em;
+    --spacing-9: 2.25em;
+    --spacing-10: 2.5em;
+    --spacing-11: 2.75em;
+    --spacing-12: 3em;
+}

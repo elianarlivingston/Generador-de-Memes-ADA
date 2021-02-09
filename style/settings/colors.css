@@ -1,0 +1,12 @@
+:root {
+    --bg-color-base: #E5DEFF;
+    --bg-color-light:#F9F4FF;
+    --bg-color-dark: #F6E7FE;
+
+    --text-color-base: #413D78;
+    --text-color-light: #C2BFD6;
+    --text-color-dark:#0A064C;
+
+    --success: #34D399;
+    --danger: #F87171;
+}
