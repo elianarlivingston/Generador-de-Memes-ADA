@@ -1,10 +1,9 @@
-
 .dark-theme {
-    --bg-color-base: #0B1243;
-    --bg-color-light: #171E5C;
-    --bg-color-dark: #050934;   
+    --bg-color-base: #252952;
+    --bg-color-light: #1F2245;
+    --bg-color-dark: #191D44;   
 
-    --text-color-base: #525AA5;
-    --text-color-light: #B3B1C9;
-    --text-color-dark: #444B97;
+    --text-color-base: #535996;
+    --text-color-light: #9EA1CE;
+    --text-color-dark: #373C76;
 }

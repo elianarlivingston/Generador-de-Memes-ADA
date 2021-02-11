@@ -1,11 +1,11 @@
 :root {
-    --bg-color-base: #E5DEFF;
-    --bg-color-light:#F9F4FF;
-    --bg-color-dark: #F6E7FE;
+    --bg-color-base: #F9F9F9;
+    --bg-color-light:#FEFEFE;
+    --bg-color-dark: #F1F1F1;
 
-    --text-color-base: #413D78;
-    --text-color-light: #C2BFD6;
-    --text-color-dark:#0A064C;
+    --text-color-base: #545454;
+    --text-color-light: #A09F9F;
+    --text-color-dark:#434343;
 
     --success: #34D399;
     --danger: #F87171;
