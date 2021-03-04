@@ -1,0 +1,6 @@
+.o-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-1) var(--spacing-4);
+}

@@ -6,8 +6,819 @@
     <title>Generador de Memes</title>
     <link rel="stylesheet" href="./index.css">
 </head>
+
+        <!-- <header class="bg-color-light">
+            <div class="o-nav o-container">
+                <h1 class="fs-regular">Generador de Memes</h1>
+                <switch-theme></switch-theme>
+            </div>
+        </header>
+        <div class="o-container is-py-4">
+            <upload-image></upload-image>
+        </div> -->
+        <!-- <button id="btn">Open modal</button>
+        <modal-alert
+            title="La imagen no es válida"
+            text="Inténtalo de nuevo!"
+            image="ImageNotFount.svg"
+            button="Volver"
+            id="modal"
+        ></modal-alert> -->
+
+
+        <!-- <div class="template"> -->
+            <!-- <nav-edit-options></nav-edit-options>
+            
+            <ui-canvas></ui-canvas> -->
+            <!-- <div>
+                <canvas id="canvas" ></canvas>
+            </div> -->
+
+            <!-- Hacer componente button trash -->
+            <!-- <div class="bg-color-light">
+                <button class="a-btn a-btn--secondary  a-btn--large">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash text-color-base" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                    </svg>
+                </button>
+            </div> -->
+
+            <!-- <modal-text></modal-text> -->
+        <!-- </div> -->
+    <!-- <script>
+
+        const $canvas = document.getElementById("canvas")
+        const ctx = $canvas.getContext("2d")
+        const image = new Image()
+        image.setAttribute("src", "https://images.pexels.com/photos/6602777/pexels-photo-6602777.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500")
+
+        image.onload = function() {
+            ctx.drawImage(image, 10, 10, 100, 100)
+        }
+
+    </script> -->
+    <!-- <script src="./index.js" type="module"></script> -->
+    
 <body>
-    <div id="root"></div>
-    <script src="./index.js" type="module"></script>
+    <div id="root">
+        <modal-text></modal-text>
+    </div>
+<script type="module">
+import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.3.1?module';
+
+class ModalText extends LitElement {
+    static get properties() {
+    return {
+        opened: { type: Boolean },
+        select: { type: Number },
+        text: { type: Object }
+    }
+}
+
+constructor() {
+    super()
+    this.position = [{
+        id: "left",
+        icon: html`
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-justify-left" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+        `
+    },
+    {
+      id: "center",
+      icon: html`
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-text-center" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+      `  
+    }, 
+    {
+        id: "right",
+        icon: html`
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-justify-right" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+        `
+    }, 
+    {
+        id: "justify",
+        icon: html`
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
+            <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+        </svg>
+        `
+    }
+]
+    this.select = 0
+    this.text = {
+        text: "",
+        color: "",
+        background: "",
+        textAlign: "",
+        size: "",
+        fontFamily: "",
+        position: {
+            x: 0,
+            y: 0
+        }
+
+    }
+    this.textarea = ""
+}
+
+    render() {
+        return html`
+            <link rel="stylesheet" href="./index.css">
+            
+            <aside>
+                <form class="template">
+                    <nav class="is-flex is-justify-between is-align-center">
+                        <div class="is-flex">
+                            <button 
+                                type="button" 
+                                class="a-btn a-btn--secondary" 
+                                @click="${this.selectPosition}"
+                                id="${this.position[this.select].id}"
+                                >
+                                ${this.position[this.select].icon}
+                            </button>
+                            <div class="a-btn a-btn--secondary">
+                                <input 
+                                    type="color" id="text-color" class="input-color"
+                                    @input="${this.handleColor}"    
+                                />
+                            </div>
+                            <div class="a-btn a-btn--secondary is-relative max-content">
+                                <input 
+                                    type="color" id="background-color" class="rounded" 
+                                    @input="${this.handleBackground}"       
+                                />
+                                <label for="background-color" class="is-absolute is-flex is-justify-center is-align-center">
+                                
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <button 
+                            class="a-btn a-btn--secondary" type="submit"
+                            @submit=${(e) => {
+                                e.preventDefault()
+
+                                console.log(this.text)
+
+                                this.dispatchEvent(new CustomEvent('create.text', { details: this.text }))
+
+                            }}"     
+                        >Listo</button>
+                        </div>
+                    </nav>
+                    <textarea 
+                        class="textarea" 
+                        id="textarea"
+                        @input="${this.handleChange}"
+                        ></textarea>
+                    <div>
+                        <div class="is-py-4 is-px-4">
+                            <input 
+                                type="range" 
+                                min="14" 
+                                max="34"
+                                value="16"
+                            @input="${this.handleSize}"
+                        />
+                        </div>
+                    </div> 
+                </form>  
+            </aside>
+        `
+    }
+
+    firstUpdated() {
+        this.textarea = this.shadowRoot.getElementById("textarea")
+    }
+
+    selectPosition(){
+        if(this.select < 3) {
+            this.select += 1
+        } else {
+            this.select = 0
+        }
+
+        this.text.textAlign = this.position[this.select].id
+
+        this.textarea.style.textAlign = this.text.textAlign
+    }
+
+
+    handleChange(event) {
+        this.text.text = event.target.value
+    }
+
+    handleSize(event) {
+        this.text.size = `${event.target.value}px`
+        this.textarea.style.fontSize = this.text.size
+    }
+
+    handleColor(event) {
+        this.text.color = event.target.value
+        this.textarea.style.color = this.text.color
+    }
+
+    handleBackground(event) {
+        this.text.background = event.target.value
+        this.textarea.style.backgroundColor = this.text.background
+    }
+
+}
+
+customElements.define("modal-text", ModalText)
+
+
+
+
+
+
+
+
+
+
+
+
+// import { query } from "https://unpkg.com/lit-html@1.2.1/directives/class-map?module"
+
+import { convertImageToBase64, setTheme } from "./helpers/DOM.js"
+import { setDark } from "./observer/observerDark.js"
+
+class UploadImage extends LitElement {
+    static get properties() {
+        return {
+            title: {
+                type: String
+            },
+            text: {
+                type: String
+            },
+            illustration: {
+                type: String
+            },
+            button: {
+                type: String
+            },
+            dark: {
+                type: Boolean
+            },
+            image: {
+                type: String
+            }
+        }
+
+    }
+
+    constructor() {
+        super()
+        this.title = "Hello! It's Card!"
+        this.text = "Text to card"
+        this.illustration = "Upload"
+        this.dark = false
+        this.button = "Subir imagen"
+    }
+
+    render() {
+        return html`
+            <link rel="stylesheet" href="./index.css">
+
+            <article>
+                <div class="m-card is-mb-4 text-center">
+                    <header>
+                        <h2>${this.title}</h2>
+                    </header>
+                    <figure class="is-flex is-justify-center">
+                        <img src="../../assets/${this.illustration}${this.dark ? "Dark" : "Light"}.svg" alt="Upload image" />
+                    </figure> 
+                    <p>${this.text}</p>
+                    <div class="is-flex is-justify-center">
+                        <input 
+                            type="file" 
+                            class="a-btn a-btn--primary a-btn--large" 
+                            accept="image/png, image/jpeg"
+                            @change="${(e) => {
+                                this.dispatchEvent(new CustomEvent("upload.file.image", 
+                            { 
+                                detail: {
+                                    image: convertImageToBase64(e.target.files[0])
+                                }
+                            }))
+                        }
+                        }" 
+                            /> 
+                    </div>     
+                </div>
+                <div class="is-p-2 is-flex is-align-center bg-color-light">
+                    <label 
+                        class="is-pr-2"
+                    >URL</label>
+                    <input 
+                        type="url" placeholder="Agraga una URL"
+                        @change="${(e) => this.dispatchEvent(new CustomEvent("upload.url.image", 
+                        { detail: {
+                            image: e.target.value
+                        } }
+                        ))}"  
+                    >
+                </div>  
+            </article>
+        `
+    }
+}
+
+customElements.define("upload-image", UploadImage)
+
+class MyAlert extends LitElement {
+
+constructor () {
+    super()
+    this.opened = false
+}
+
+static get properties () {
+    return {
+        opened: {type: Boolean},
+        title: { type: String },
+        text: { type: String },
+        type: { type: String },
+        image: { type: String },
+        button: { type: String }
+    }
+}
+
+render () {
+    return html`
+    <link rel="stylesheet" href="./index.css">
+
+    <div class="m-container-modal ${this.opened ? "" : 'hidden'}">
+        <aside class="m-modal text-center">
+        <header>
+            <h3>${this.title}</h3>
+        </header>
+        ${this.image ? 
+            html`<figure>
+                    <img src="../../assets/${this.image}" alt="Modal image" class="modal__image" />
+                </figure>` : 
+                ""
+        }
+        ${
+            this.text ? html`<p>${this.text}</p>` : ""
+        }
+        ${
+            this.button ? html`
+            <div class="is-flex is-justify-center"> 
+                <button 
+                    class="a-btn a-btn--large a-btn--primary max-full"
+                    @click="${() => this.dispatchEvent(new CustomEvent('alert.accept'))}"
+                >${this.button}</button>    
+            </div>
+            ` : ""
+        }
+        </aside>
+    </div>
+    `
+}
+
+}
+
+customElements.define('my-alert', MyAlert)
+
+class SwitchTheme extends LitElement {
+    static get properties() {
+        return {
+            dark: {
+                type: Boolean
+            }
+        }
+    }
+
+    constructor() {
+        super()
+    }
+
+
+    render() {
+        return html`
+        <link rel="stylesheet" href="./index.css">
+
+        <div class="switch">
+        <input 
+        type="checkbox" 
+        class="switch__input"
+        ?checked="${this.dark}"
+        @change="${() => this.dispatchEvent(new CustomEvent("set.dark"))}"
+        >
+            <div class="switch__icon-moon is-pl-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-moon fill-primary" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M14.53 10.53a7 7 0 0 1-9.058-9.058A7.003 7.003 0 0 0 8 15a7.002 7.002 0 0 0 6.53-4.47z"/>
+                </svg>
+            </div>
+            <div class="switch__icon-sun is-pl-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-brightness-high-fill fill-primary" viewBox="0 0 16 16">
+                    <path d="M12 8a4 4 0 1 1-8 0 4 4 0 0 1 8 0zM8 0a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 0zm0 13a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-1 0v-2A.5.5 0 0 1 8 13zm8-5a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2a.5.5 0 0 1 .5.5zM3 8a.5.5 0 0 1-.5.5h-2a.5.5 0 0 1 0-1h2A.5.5 0 0 1 3 8zm10.657-5.657a.5.5 0 0 1 0 .707l-1.414 1.415a.5.5 0 1 1-.707-.708l1.414-1.414a.5.5 0 0 1 .707 0zm-9.193 9.193a.5.5 0 0 1 0 .707L3.05 13.657a.5.5 0 0 1-.707-.707l1.414-1.414a.5.5 0 0 1 .707 0zm9.193 2.121a.5.5 0 0 1-.707 0l-1.414-1.414a.5.5 0 0 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .707zM4.464 4.465a.5.5 0 0 1-.707 0L2.343 3.05a.5.5 0 1 1 .707-.707l1.414 1.414a.5.5 0 0 1 0 .708z"/>
+                  </svg>
+            </div>
+        </div>
+        `
+    }
+
+
+
+}
+
+customElements.define("switch-theme", SwitchTheme)
+
+const navEditOptions = [
+    {
+        text: "Descargar",
+        id: "download",
+        icon: html`
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-download text-color-base" viewBox="0 0 16 16">
+                <path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/>
+                <path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/>
+            </svg>
+        `,
+        component: `<div>Descargar</div>`
+    },
+    {
+        text: "Filtros",
+        id: "filter",
+        icon: html`
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-filter-square text-color-base" viewBox="0 0 16 16">
+                <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                <path d="M6 11.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+        `,
+        component: `<modal-text></modal-text>`
+    },
+    {
+        text: "Texto",
+        id: "text",
+        icon: html`
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-fonts text-color-base" viewBox="0 0 16 16">
+                <path d="M12.258 3H3.747l-.082 2.46h.478c.26-1.544.76-1.783 2.694-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V3.602l.43.013c1.935.062 2.434.301 2.694 1.846h.479L12.258 3z"/>
+            </svg>
+        `,
+        component: `<modal-text></modal-text>`
+    },
+
+]
+
+class List extends LitElement {
+    static get properties() {
+        return {
+            items: { type: Array }
+        }
+    }
+
+    constructor(){
+        super()
+        this.items = []
+    }
+
+    render() {
+        return html`
+            <link rel="stylesheet" href="./index.css">
+
+            <ul class="o-ui-list o-ui-list--horizontal">
+                ${this.items.map(item => html`
+                    <li class="a-btn a-btn--secondary" title="${item.text}">
+                        <span class="text-color-base">${item.icon}</span>
+                    </li>`)
+                } 
+            </ul>
+        `
+    }
+}
+customElements.define("ui-list", List)
+
+import { setImage } from "./observer/observerImage.js"
+import { handleMouseDown, handleMouseMove, handleMouseUp, drawImageFunc } from "./helpers/imageResize.js" 
+
+
+
+class ModalEdit extends LitElement {
+    static get properties() {
+        return {
+            opened: { type: Boolean },
+            item: { type: Array },
+            src: { type: String
+             }
+        }
+    }
+    
+    constructor() {
+        super()
+        this.opened = false
+        this.item = []
+
+        this.imageOptions = {
+            background: '',
+            text: [{
+                text: 'Hola',
+                color: '#000',
+                align: 'left',
+                size: '16',
+                background: 'transparent',
+                family: 'Ubuntu',
+                position: {
+                    x: 10,
+                    y: 10
+                }
+            }],
+            position: {
+                x: 0,
+                y: 0,
+                w: 320,
+                h: 200
+            },
+        }
+        this.image = new Image()
+        this.canvas = ""
+        
+    }
+
+    render() {
+        console.log("render")
+        return html`
+            <link rel="stylesheet" href="./index.css">
+
+            <aside class="m-screen template ${this.opened ? "" : "hidden"}">
+                <header class="bg-color-light">
+                    <nav class="is-flex is-justify-between">
+                        <button 
+                            class="a-btn a-btn--secondary"
+                            @click="${() => this.dispatchEvent(new CustomEvent("modal.close"))}"
+                            >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-x text-color-base" viewBox="0 0 16 16">
+                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                            </svg> 
+                        </button>
+                        <div class="is-flex">
+                            <ui-list .items="${navEditOptions}"></ui-list>
+                            <div class="a-btn a-btn--secondary">
+                                <input 
+                                    type="color" 
+                                    @change="${this.backgoundChange}"
+                                />
+                            </div>    
+                        </div>
+                    </nav>
+                </header>
+                <div id="container-canvas">  
+                    <canvas 
+                        width="320" 
+                        height="300" 
+                        id="canvas"
+                        @mousedown="${(e) => handleMouseDown(e, this.imageOptions.position, this.canvas)}"
+
+                        @mousemove="${(e) => handleMouseMove(e, this.imageOptions.position, this.canvas, this.image)}"
+
+                        @mouseup="${handleMouseUp}"
+                    ></canvas>
+                </div>
+                <footer class="bg-color-light">
+                    <button 
+                        class="a-btn a-btn--secondary a-btn--large max-full text-color-base"
+                        @click="${() => this.dispatchEvent(new CustomEvent("modal.text"))}"
+                        >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                        </svg>
+                    </button>
+                </footer>
+            </aside>
+        
+        `
+    }
+
+    backgoundChange(e) {
+        console.log(e.target.value)
+    }
+
+    // NOTA: Solucionar que se renderice la imagen sin recargar
+
+
+    firstUpdated() {
+        console.log("firstUpdated")
+        super.firstUpdated()
+
+        this.canvas = this.renderRoot.querySelector("#canvas")
+
+        this.canvas.setAttribute("width", this.canvas.parentNode.offsetWidth)
+
+        this.canvas.setAttribute("height", this.canvas.parentNode.offsetHeight - 20)
+
+        this.canvasImage()
+    }
+    
+
+    updated() {
+        console.log("updated")
+        super.updated()
+
+        this.imageOptions.position.w =  this.canvas.parentNode.offsetWidth 
+
+        this.imageOptions.position.h = (this.canvas.parentNode.offsetWidth / 16) * 9
+
+        this.imageOptions.position.y = (this.canvas.offsetHeight - (this.canvas.parentNode.offsetWidth / 16) * 9) / 2
+
+        this.image.setAttribute("src", window.localStorage.getItem("image") || "")
+
+        this.image.addEventListener("load", drawImageFunc(this.canvas, this.image, this.imageOptions.position.x, this.imageOptions.position.y, this.imageOptions.position.w, this.imageOptions.position.h))
+    }
+    
+
+    canvasImage() {
+        this.updateComplete.then(() => {
+            console.log("updateComplete")
+            this.image.setAttribute("src", window.localStorage.getItem("image") || "")
+
+            this.image.addEventListener("load",
+                drawImageFunc(this.canvas, this.image, this.imageOptions.position.x, this.imageOptions.position.y, this.imageOptions.position.w, this.imageOptions.position.h)
+            )
+        })
+    }
+
+    disconnectedCallback() {
+        super.disconnectedCallback()
+        
+        this.image.removeEventListener("load", drawImageFunc(this.canvas, this.image, this.imageOptions.position.x, this.imageOptions.position.y, this.imageOptions.position.w, this.imageOptions.position.h))
+    }
+}
+
+customElements.define("modal-edit", ModalEdit)
+
+class MyApp extends LitElement {
+    static get properties() {
+        return {
+            dark: {
+                type: Boolean
+            },
+            openedAlert: {
+                type: Boolean
+            },
+            openedModalEdit: {
+                type: Boolean
+            },
+            dark: {type: Boolean}
+        }
+    }
+
+    constructor () {
+        super()
+        this.style.display = "block"
+
+        this.dark = JSON.parse(window.localStorage.getItem("dark")) || window.matchMedia("(prefers-color-scheme: dark)").matches
+
+        this.openedAlert = false
+        this.openedModalEdit = window.localStorage.getItem("image")
+            ? true : false
+        this.modalText = false
+    }
+
+
+    render () {
+        return html`
+        <link rel="stylesheet" href="./index.css">
+        
+        <div 
+            class="o-container"
+            ?disabled="${!this.openedModalEdit}"
+            >
+            <switch-theme
+                @set.dark="${this.setDarkTheme}"
+            ></switch-theme>
+            <upload-image
+                title="Sube una imagen para comenzar! "
+                text="Arrastra o has click en el botón para agragar una imagen."
+                button="Subir"
+                @upload.file.image="${this.imageValidFile}"
+                @upload.url.image="${this.imageValidURL}"
+                ?dark="${this.dark}"
+            ></upload-image>
+            <my-alert
+                title="La imagen no funciona"
+                text="Inténtalo de nuevo!"
+                button="volver"
+                image="ImageNotFount.svg"
+                @alert.accept="${this.closeAlert}"
+                ?opened="${this.openedAlert}"
+            ></my-alert>    
+        </div>
+        <modal-edit
+            ?opened="${this.openedModalEdit}"
+            @modal.close="${this.closeModalEdit}"
+            @modal.text="${this.modalText}"
+        ></modal-edit>
+        <modal-text
+            ?opened="${this.modalText}"
+        ></modal-text>
+        `
+    }
+
+    setDarkTheme() {
+        // Seteamos la propiedad
+        this.dark = !this.dark
+
+        // Notificamos un cambio a los observer
+        setDark.notify(JSON.stringify(this.dark))
+    }
+
+    imageValidFile(e) {
+        // fijarse si la imagen funciona
+        const $image = new Image()
+
+        e.detail.image.then(data => {
+            $image.setAttribute("src", data)
+
+            // funciona
+            $image.addEventListener("load", () => {
+                // Guardar en localStorage
+                setImage.notify(data)
+
+                // Redireccionar a Editar
+                this.openedModalEdit = true
+            })    
+
+            //No funciona
+            $image.addEventListener("error", () => {
+                this.openedAlert = true
+            })
+        }).catch(err => console.log("Upps hubo un error!"))
+    }
+
+    imageValidURL(e) {
+        const $image = new Image()
+        $image.setAttribute("src", e.target.value)
+        // funciona
+        $image.addEventListener("load", () => {
+            // Guardar en localStorage
+            setImage.notify(e.target.value)
+
+            // Redireccionar a Editar
+             this.openedModalEdit = true
+        }) 
+         //No funciona
+        $image.addEventListener("error", () => {
+            this.openedAlert = true
+        })  
+    }
+
+    closeAlert() {
+        console.log("close")
+        this.openedAlert = false
+    }
+
+    closeModalEdit() {
+        window.localStorage.removeItem("image")
+
+        this.openedModalEdit = false
+    }
+
+    openModalText() {
+        this.modalText = true
+    }
+
+
+    // Sacar los eventos al destruir el componente
+
+}
+
+customElements.define('my-app', MyApp)
+
+    </script>
 </body>
 </html>
+
+<!-- this.dialogVisible = false
+dialogVisible: {type: Boolean}
+toggleDialog (e) {
+    this.dialogVisible = !this.dialogVisible
+    console.log(this.dialogVisible)
+}
+
+closeDialog (e) {
+    console.log(e)
+    this.dialogVisible = false
+}
+<my-alert 
+?opened="${this.dialogVisible}" 
+@alert.accept="${this.closeDialog}"
+title="La imagen no es válida"
+text="Intentalo de nuevo!"
+button="Volver"
+image="ImageNotFount.svg"
+</my-alert> -->
+<!--  -->
+
+
+    

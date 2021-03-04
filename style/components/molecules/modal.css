@@ -1,0 +1,44 @@
+.m-container-modal {
+    padding: var(--spacing-12) var(--spacing-10);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.m-modal {
+    width: 100%;
+    max-width: 20rem;
+    padding: var(--spacing-7) var(--spacing-8);
+    background-color: var(--bg-color-light);
+    border-radius: var(--spacing-1);
+    position: relative;
+}
+
+.m-modal__close {
+    position: absolute;
+    top: var(--spacing-2);
+    right: var(--spacing-2);
+}
+
+.m-hidden {
+    top: -100%;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+}
+
+.m-screen {
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: var(--bg-color-base);
+}

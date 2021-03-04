@@ -1,0 +1,126 @@
+.a-btn {
+    border: none;
+    outline: none;
+    margin: 0;
+
+    border-radius: 5px;
+    padding: var(--spacing-3) var(--spacing-4);
+    font-size: var(--fs-small);
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.a-btn--large {
+    display: block;
+    width: 100%;
+    padding: var(--spacing-5);
+}
+
+@media screen and (min-width: 720px) {
+    .a-btn--large {
+        max-width: max-content;
+    }
+}
+
+
+.a-btn--medium {
+    padding: var(--spacing-4) var(--spacing-5);
+}
+
+.a-btn--primary {
+    background-color: var(--primary-base);
+    box-shadow: 0 0 10px 1px var(--primary-shadow);
+    color: white;
+}
+
+.a-btn--secondary {
+    background-color: transparent;
+}
+
+/* ACTIONS */
+.a-btn--primary:hover {
+    background-color: var(--primary-light);
+}
+
+.a-btn--primary:active {
+    background-color: var(--primary-dark);
+}
+
+/* ACTIONS */
+
+.a-btn--secondary:hover {
+    background-color: var(--bg-color-base);
+}
+
+.a-btn--secondary:active {
+    background-color: var(--bg-color-dark);
+}
+
+/* BUTTON SWITCH */
+
+.switch {
+    width: max-content;
+    display: flex;
+    align-items: center;
+}
+
+.switch__input {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    appearance: none;
+    border: 1px solid transparent;
+
+    display: block;
+    width: var(--spacing-10);
+    height: var(--spacing-5);
+    border-radius: 999px;
+
+    background-color: var(--bg-color-base);
+    box-shadow: inset 0px 0px 5px 2px rgba(0, 0, 0, 0.10);
+    border-radius: 10px;
+
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.switch__input::before {
+    content: "";
+    display: block;
+    width: var(--spacing-6);
+    height: var(--spacing-6);
+    border-radius: 9999px;
+    background-color: var(--bg-color-dark);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15), inset 0px 0px 2px rgba(0, 0, 0, 0.3);
+}
+
+.switch__icon-moon {
+    display: none;
+}
+
+.switch__icon-sun {
+    display: flex;
+    align-items: center;
+}
+
+/* ACTIONS */
+.switch__input:checked {
+    justify-content: flex-end;
+}
+
+.switch__input:checked ~ .switch__icon-moon {
+    display: flex;
+    align-items: center;
+}
+
+.switch__input:checked ~ .switch__icon-sun {
+    display: none;
+}
+
+
+/**/
+

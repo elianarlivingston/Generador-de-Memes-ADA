@@ -1,0 +1,11 @@
+.text-center {
+    text-align: center;
+}
+
+.fs-regular {
+    font-size: var(--fs-regular);
+}
+
+.text-color-light {
+    color: var(--text-color-light);
+}
