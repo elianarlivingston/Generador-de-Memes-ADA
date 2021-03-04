@@ -1,0 +1,17 @@
+body {
+    --primary-base: #4EAEFE;
+    --primary-dark: #2F9EFB;
+    --primary-light: #6ABBFF;
+    --primary-shadow: rgba(2, 140, 255, 0.4);
+
+    --bg-color-base: #F9F9F9;
+    --bg-color-light:#FEFEFE;
+    --bg-color-dark: #F1F1F1;
+
+    --text-color-base: #545454;
+    --text-color-light: #A09F9F;
+    --text-color-dark:#434343;
+
+    --success: #34D399;
+    --danger: #F87171;
+}

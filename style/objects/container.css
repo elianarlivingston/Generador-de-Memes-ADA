@@ -1,0 +1,11 @@
+.o-container {
+    max-width: calc(100% - 2rem);
+    margin: 0 1rem;
+}
+
+@media screen and (min-width: 720px) {
+    .o-container {
+        max-width: calc(calc(100% / 12) * 8);
+        margin: 0 auto;
+    }
+}

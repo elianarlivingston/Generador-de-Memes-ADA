@@ -1,0 +1,102 @@
+input[type="file" i]  {
+    margin: 0;
+    width: 100%;
+    position: relative;
+    color: transparent;  
+}
+
+input[type="file" i]::file-selector-button {
+    display: none;
+}
+
+input[type="file" i]::-webkit-file-upload-button  {
+    display: none;
+}
+
+input[type="file" i]::before {
+    content: "Subir imagen";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+input[type="url"] {
+    width: 100%;
+    display: block;
+    padding: var(--spacing-2) var(--spacing-3);
+    border: 1px solid var(--bg-color-dark);
+    background-color: var(--bg-color-light);
+    outline: none;
+    color: var(--text-color-base);
+}
+
+input[type="url"]:focus {
+    border: 1px solid var(--primary-light);
+    box-shadow: 0 0 5px 1px var(--primary-shadow);
+}
+
+input[type="url"]:placeholder-shown {
+    color: var(--text-color-light);
+}
+
+input[type="url"]::placeholder {
+    color: var(--text-color-light);
+}
+
+input[type="color" i] {
+    margin: 0;
+    padding: 0;
+
+    width: var(--spacing-8);
+    height: var(--spacing-8);
+    border-radius: 50%;
+    overflow: hidden;
+    outline: none;
+    border: 0;
+
+    display: flex;
+    align-items: center;
+}
+
+input[type="color" i]::-webkit-color-swatch-wrapper {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    border: 0;
+    outline: none;
+}
+
+input[type="color" i]::-webkit-color-swatch {
+    margin: 0;
+    padding: 0;
+
+    width: 100%;
+    border: 0;
+    outline: none;
+}
+
+input[type="radio" i] {
+    appearance: none;
+}
+
+input[type="radio" i]:checked ~ span {
+    color: blue;
+}
+
+.textarea {
+    border: none;
+    outline: none;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+input[type="range" i] {
+    display: block;
+    width: 100%;
+}
