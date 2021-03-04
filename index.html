@@ -62,178 +62,178 @@
     
 <body>
     <div id="root">
-        <modal-text></modal-text>
+        <my-app></my-app>
     </div>
 <script type="module">
 import { LitElement, html, css } from 'https://unpkg.com/lit-element@2.3.1?module';
 
-class ModalText extends LitElement {
-    static get properties() {
-    return {
-        opened: { type: Boolean },
-        select: { type: Number },
-        text: { type: Object }
-    }
-}
+// class ModalText extends LitElement {
+//     static get properties() {
+//     return {
+//         opened: { type: Boolean },
+//         select: { type: Number },
+//         text: { type: Object }
+//     }
+// }
 
-constructor() {
-    super()
-    this.position = [{
-        id: "left",
-        icon: html`
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-justify-left" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-        `
-    },
-    {
-      id: "center",
-      icon: html`
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-text-center" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-        </svg>
-      `  
-    }, 
-    {
-        id: "right",
-        icon: html`
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-justify-right" viewBox="0 0 16 16">
-                <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-            </svg>
-        `
-    }, 
-    {
-        id: "justify",
-        icon: html`
-        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
-            <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
-        </svg>
-        `
-    }
-]
-    this.select = 0
-    this.text = {
-        text: "",
-        color: "",
-        background: "",
-        textAlign: "",
-        size: "",
-        fontFamily: "",
-        position: {
-            x: 0,
-            y: 0
-        }
+// constructor() {
+//     super()
+//     this.position = [{
+//         id: "left",
+//         icon: html`
+//             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-justify-left" viewBox="0 0 16 16">
+//                 <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+//             </svg>
+//         `
+//     },
+//     {
+//       id: "center",
+//       icon: html`
+//         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-text-center" viewBox="0 0 16 16">
+//             <path fill-rule="evenodd" d="M4 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm2-3a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-2-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+//         </svg>
+//       `  
+//     }, 
+//     {
+//         id: "right",
+//         icon: html`
+//             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-justify-right" viewBox="0 0 16 16">
+//                 <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zm-4-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+//             </svg>
+//         `
+//     }, 
+//     {
+//         id: "justify",
+//         icon: html`
+//         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-justify" viewBox="0 0 16 16">
+//             <path fill-rule="evenodd" d="M2 12.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-3a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
+//         </svg>
+//         `
+//     }
+// ]
+//     this.select = 0
+//     this.text = {
+//         text: "",
+//         color: "",
+//         background: "",
+//         textAlign: "",
+//         size: "",
+//         fontFamily: "",
+//         position: {
+//             x: 0,
+//             y: 0
+//         }
 
-    }
-    this.textarea = ""
-}
+//     }
+//     this.textarea = ""
+// }
 
-    render() {
-        return html`
-            <link rel="stylesheet" href="./index.css">
+//     render() {
+//         return html`
+//             <link rel="stylesheet" href="./index.css">
             
-            <aside>
-                <form class="template">
-                    <nav class="is-flex is-justify-between is-align-center">
-                        <div class="is-flex">
-                            <button 
-                                type="button" 
-                                class="a-btn a-btn--secondary" 
-                                @click="${this.selectPosition}"
-                                id="${this.position[this.select].id}"
-                                >
-                                ${this.position[this.select].icon}
-                            </button>
-                            <div class="a-btn a-btn--secondary">
-                                <input 
-                                    type="color" id="text-color" class="input-color"
-                                    @input="${this.handleColor}"    
-                                />
-                            </div>
-                            <div class="a-btn a-btn--secondary is-relative max-content">
-                                <input 
-                                    type="color" id="background-color" class="rounded" 
-                                    @input="${this.handleBackground}"       
-                                />
-                                <label for="background-color" class="is-absolute is-flex is-justify-center is-align-center">
+//             <aside>
+//                 <form class="template">
+//                     <nav class="is-flex is-justify-between is-align-center">
+//                         <div class="is-flex">
+//                             <button 
+//                                 type="button" 
+//                                 class="a-btn a-btn--secondary" 
+//                                 @click="${this.selectPosition}"
+//                                 id="${this.position[this.select].id}"
+//                                 >
+//                                 ${this.position[this.select].icon}
+//                             </button>
+//                             <div class="a-btn a-btn--secondary">
+//                                 <input 
+//                                     type="color" id="text-color" class="input-color"
+//                                     @input="${this.handleColor}"    
+//                                 />
+//                             </div>
+//                             <div class="a-btn a-btn--secondary is-relative max-content">
+//                                 <input 
+//                                     type="color" id="background-color" class="rounded" 
+//                                     @input="${this.handleBackground}"       
+//                                 />
+//                                 <label for="background-color" class="is-absolute is-flex is-justify-center is-align-center">
                                 
-                                </label>
-                            </div>
-                        </div>
-                        <div>
-                            <button 
-                            class="a-btn a-btn--secondary" type="submit"
-                            @submit=${(e) => {
-                                e.preventDefault()
+//                                 </label>
+//                             </div>
+//                         </div>
+//                         <div>
+//                             <button 
+//                             class="a-btn a-btn--secondary" type="submit"
+//                             @submit=${(e) => {
+//                                 e.preventDefault()
 
-                                console.log(this.text)
+//                                 console.log(this.text)
 
-                                this.dispatchEvent(new CustomEvent('create.text', { details: this.text }))
+//                                 this.dispatchEvent(new CustomEvent('create.text', { details: this.text }))
 
-                            }}"     
-                        >Listo</button>
-                        </div>
-                    </nav>
-                    <textarea 
-                        class="textarea" 
-                        id="textarea"
-                        @input="${this.handleChange}"
-                        ></textarea>
-                    <div>
-                        <div class="is-py-4 is-px-4">
-                            <input 
-                                type="range" 
-                                min="14" 
-                                max="34"
-                                value="16"
-                            @input="${this.handleSize}"
-                        />
-                        </div>
-                    </div> 
-                </form>  
-            </aside>
-        `
-    }
+//                             }}"     
+//                         >Listo</button>
+//                         </div>
+//                     </nav>
+//                     <textarea 
+//                         class="textarea" 
+//                         id="textarea"
+//                         @input="${this.handleChange}"
+//                         ></textarea>
+//                     <div>
+//                         <div class="is-py-4 is-px-4">
+//                             <input 
+//                                 type="range" 
+//                                 min="14" 
+//                                 max="34"
+//                                 value="16"
+//                             @input="${this.handleSize}"
+//                         />
+//                         </div>
+//                     </div> 
+//                 </form>  
+//             </aside>
+//         `
+//     }
 
-    firstUpdated() {
-        this.textarea = this.shadowRoot.getElementById("textarea")
-    }
+//     firstUpdated() {
+//         this.textarea = this.shadowRoot.getElementById("textarea")
+//     }
 
-    selectPosition(){
-        if(this.select < 3) {
-            this.select += 1
-        } else {
-            this.select = 0
-        }
+//     selectPosition(){
+//         if(this.select < 3) {
+//             this.select += 1
+//         } else {
+//             this.select = 0
+//         }
 
-        this.text.textAlign = this.position[this.select].id
+//         this.text.textAlign = this.position[this.select].id
 
-        this.textarea.style.textAlign = this.text.textAlign
-    }
+//         this.textarea.style.textAlign = this.text.textAlign
+//     }
 
 
-    handleChange(event) {
-        this.text.text = event.target.value
-    }
+//     handleChange(event) {
+//         this.text.text = event.target.value
+//     }
 
-    handleSize(event) {
-        this.text.size = `${event.target.value}px`
-        this.textarea.style.fontSize = this.text.size
-    }
+//     handleSize(event) {
+//         this.text.size = `${event.target.value}px`
+//         this.textarea.style.fontSize = this.text.size
+//     }
 
-    handleColor(event) {
-        this.text.color = event.target.value
-        this.textarea.style.color = this.text.color
-    }
+//     handleColor(event) {
+//         this.text.color = event.target.value
+//         this.textarea.style.color = this.text.color
+//     }
 
-    handleBackground(event) {
-        this.text.background = event.target.value
-        this.textarea.style.backgroundColor = this.text.background
-    }
+//     handleBackground(event) {
+//         this.text.background = event.target.value
+//         this.textarea.style.backgroundColor = this.text.background
+//     }
 
-}
+// }
 
-customElements.define("modal-text", ModalText)
+// customElements.define("modal-text", ModalText)
 
 
 
